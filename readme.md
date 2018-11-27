@@ -2,7 +2,7 @@
 
 ### 配置文件
 在 `main.js` 文件中 进行各种文件配置
- 
+
  + 引入各种所需模块
     - vue	       : 用于定义全局的 Vue (需下载: npm i vue -S)
     - vue-resource : 用来发送ajax请求,解析后台开发文档中的 json数据 (需下载: npm i vue-resource -S)
@@ -47,45 +47,55 @@
     ```
 
 ### 自定义路由模块
-    在 js文件 `router.js` 中引入路由模块 `vue-loader`, 所需路由组件,定义相对应的路由,最后暴露路自定义路由
+在 js文件 `router.js` 中引入路由模块 `vue-loader`, 所需路由组件,定义相对应的路由,最后暴露路自定义路由
 
-    ```js
-        import vueRouter from 'vue-router';
-        import home from './components/tabbar/home.vue';
-        const router = new vueRouter({ //创建路由对象
-            routes: [
-                    {path:'/',redirect:'/home'},
-                    {path:'/home',component:home},
-                    {path:'/home/newsDetail/:id',component:newsDetail},  //带id 的 newsDetail
-                    {path:'/home/photoDetail/:id',component:photoDetail}  //带id 的 photoDetail
-                ],
-                
-                // 修改路由对象的默认类
-                'linkActiveClass':'mui-active'
-        });
-        export default router;
-    ```
+```js
+    // 引入router模块
+    import vueRouter from 'vue-router';
 
+    // tabbar
+    import home from './components/tabbar/home.vue';
+
+    // news
+    import newsList from './components/news/newsList.vue';
+    import newsDetail from './components/news/newsDetail.vue';
+
+    // 定义各种路由
+    const router = new vueRouter({ //创建路由对象
+        routes: [
+            {path:'/',redirect:'/home'},
+            {path:'/home',component:home},
+            {path:'/home/newsList',component:newsList},
+            {path:'/home/newsDetail/:id',component:newsDetail},  //带id 的 newsDetail
+        ],
+        
+        // 修改路由对象的默认类
+        'linkActiveClass':'mui-active'
+    });
+
+    // 进行暴露
+    export default router;
+```
 ### 创建各种所需子组件
 
-    如:home.vue文件, `./src/components/tabbar/home.vue`
-        ```vue
-            <template>
-                <div>
+如:home.vue文件, `./src/components/tabbar/home.vue`
+```vue
+        <template>
+            <div>
 
-                </div>
-            </template>
+            </div>
+        </template>
 
-            <script>
-                export default {
-                    
-                }
-            </script>
+        <script>
+            export default {
+                
+            }
+        </script>
 
-            <style scoped>
+        <style scoped>
 
-            </style>
-        ```
+        </style>
+```
 
 
 
