@@ -16,6 +16,12 @@ import newsDetail from './components/news/newsDetail.vue';
 import photoList from './components/photo/photoList.vue';
 import photoDetail from './components/photo/photoDetail.vue';
 
+// goods
+import goodsList from './components/goods/goodsList.vue';
+import goodsDetail from './components/goods/goodsDetail.vue';
+import goodsDesc from './components/goods/goodsDesc.vue';
+
+
 
 // 定义各种路由
 const router = new vueRouter({ //创建路由对象
@@ -28,7 +34,10 @@ const router = new vueRouter({ //创建路由对象
         {path:'/home/newsList',component:newsList},
         {path:'/home/newsDetail/:id',component:newsDetail},  //带id 的 newsDetail
         {path:'/home/photoList',component:photoList},
-        {path:'/home/photoDetail/:id',component:photoDetail}  //带id 的 photoDetail
+        {path:'/home/photoDetail/:id',component:photoDetail},  //带id 的 photoDetail
+        {path:'/home/goodsList',component:goodsList},
+        {path:'/home/goodsDetail/:id',component:goodsDetail},  //带id 的 photoDetail
+        {path:'/home/goodsDesc/:id',component:goodsDesc}  //带id 的 photoDetail
     ],
     
     // 修改路由对象的默认类

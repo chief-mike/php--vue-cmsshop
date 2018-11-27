@@ -60,7 +60,7 @@
           Toast('不能为空');
           return;
         }
-        //发送ajax请求，发布评论
+        //发送ajax请求，发布评论	        
         //post第二个参数post请求体参数  第三个参数是模拟post表单传递数据（也可以全局设置）
         this.$http.post("api/postcomment/" + this.id, {
           content: this.content
@@ -72,6 +72,10 @@
             //把当前的评论数据放在数组的末端
             this.content = ''; //清空评论的信息
             this.comments = []; //清空数据
+
+            // 初始化pageindex
+            this.pageindex = 1;
+
             this.getComments(); //重新加载最新的评论信息
           }
         });

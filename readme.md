@@ -96,6 +96,45 @@
 
         </style>
 ```
+### 缩略图界面
+
+引入查看大图[可滑动]插件 -- vue-preview
+```js
+    import VuePreview from 'vue-preview';
+    Vue.use(VuePreview);
+```
+在`photodetail.vue`子组件中定义
+```vue
+    <template>
+     <!-- 缩略图  [vue-preview] - [可滑动 :slides] -->
+        <vue-preview :slides='images'></vue-preview>
+
+    </template>
+
+    <script>
+        getThumbImg(){
+                this.$http.get('api/getthumbimages/'+this.id).then((res)=>{
+                    console.log(res.body);
+
+                    if(res.body.status == 0){
+                        res.body.message.forEach(ele => {
+                            console.log(ele);
+                            ele.msrc=ele.src;
+                            ele.w = 600;
+                            ele.h = 400;
+                        });
+                    }
+                    this.images = res.body.message;
+                });
+            }
+    </script>
+
+```
+
+
+### 商品列表的弹性布局
+`弹性布局` 一般用flex进行布局
+
 
 
 

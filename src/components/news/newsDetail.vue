@@ -79,5 +79,11 @@
             width: 100%
         }
 
+        // 解决scope 的bug
+        /deep/ img{
+            height: 100%;
+            width: 100%;
+        }
+
     }
 </style>

@@ -6,11 +6,12 @@
             <mt-swipe-item>222</mt-swipe-item>
             <mt-swipe-item>333</mt-swipe-item>
         </mt-swipe> -->
-        <mt-swipe :auto="4000">
+        <swipe :lunbo="lunbo"></swipe>
+        <!-- <mt-swipe :auto="4000">
             <mt-swipe-item v-for="item in lunbo" :key="item.url">
                 <img :src="item.img" alt="">
             </mt-swipe-item>
-        </mt-swipe>
+        </mt-swipe> -->
 
         <!-- 九宫格 -->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -27,10 +28,12 @@
                 </router-link >
             </li>
 
-            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-                    <img src="../../images/menu3.png" alt="">
-                    <div class="mui-media-body">商品购买</div>
-                </a></li>
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                    <router-link to="/home/goodsList">
+                        <img src="../../images/menu3.png" alt="">
+                        <div class="mui-media-body">商品购买</div>
+                    </router-link>
+            </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
                     <img src="../../images/menu4.png" alt="">
                     <div class="mui-media-body">留言反馈</div>
@@ -49,6 +52,9 @@
 </template>
 
 <script>
+    // 引入公共的swipe子组件
+    import swipe from '../common/swipe.vue';
+
     export default {
         data() {
             return {
@@ -68,19 +74,22 @@
                     }
                 });
             }
+        },
+        components:{
+            swipe
         }
     }
 </script>
 
 <style lang='scss' scoped>
     .home-container {
-        .mint-swipe {
-            height: 200px;
-            img {
-                width: 100%;
-                height: 100%;
-            }
-        }
+        // .mint-swipe {
+        //     height: 200px;
+        //     img {
+        //         width: 100%;
+        //         height: 100%;
+        //     }
+        // }
 
         .mui-grid-9 {
             background-color: #fff;

@@ -36,6 +36,11 @@ import 'vant/lib/index.css';  //按需导入所需样式
 Vue.use(Tab).use(Tabs);
 
 
+// 10. 引入查看大图[可滑动]插件 -- vue-preview
+import VuePreview from 'vue-preview';
+Vue.use(VuePreview);
+
+
 // 4. 引入样式 [扩展]
 import './lib/mui/css/mui.css'; 
 import './lib/mui/css/icons-extra.css';

@@ -13,9 +13,12 @@
         <hr>
 
         <!-- 图片信息 -->
-        <div class="images">
+        <!-- <div class="images">
             <img src="http://phvbk3pna.bkt.clouddn.com/zhongri.jpg" alt="">
-        </div>
+        </div> -->
+
+        <!-- 缩略图  [vue-preview] - [可滑动 :slides] -->
+        <vue-preview :slides='images'></vue-preview>
 
         <!-- 内容 -->
         <div class="content" v-html="photoinfo.content"></div>
@@ -33,11 +36,13 @@
         data() {
             return {
                 id: this.$route.params.id,
-                photoinfo: {}
+                photoinfo: {},
+                images:[]  //用于存储所有的缩略图
             }
         },
         created() {
             this.getImageInfo();
+            this.getThumbImg();
         },
         methods: {
             getImageInfo() {
@@ -45,6 +50,20 @@
                     if (res.body.status == 0) {
                         this.photoinfo = res.body.message[0];
                     }
+                });
+            },
+            getThumbImg(){
+                this.$http.get('api/getthumbimages/'+this.id).then((res)=>{
+                    console.log(res.body);
+                    if(res.body.status == 0){
+                        res.body.message.forEach(ele => {
+                            console.log(ele);
+                            ele.msrc=ele.src;
+                            ele.w = 600;
+                            ele.h = 400;
+                        });
+                    }
+                    this.images = res.body.message;
                 });
             }
         },
