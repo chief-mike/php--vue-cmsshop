@@ -135,7 +135,126 @@
 ### 商品列表的弹性布局
 `弹性布局` 一般用flex进行布局
 
+```vue
+    
+    <template>
+        <div>
+            <router-link class="item" :to="'/home/goodsDetail/'+item.id" tag="div" v-for="item in goodslist" :key="item.id">
+                <!-- 懒加载图片 -->
+                <img v-lazy='item.img_url' alt="">
+                <h3 class="title">{{item.title}}</h3>
+
+                <!-- 商品信息 -->
+                <div class="info">
+                    <p class="price">
+                         <span class="new">💴 {{item.sell_price}}</span>
+                         <span class="origin">💴 {{item.market_price}}</span>
+                    </p>
+                    <p class="hot">
+                        <span>热卖中</span>
+                        <span class="lost">剩 <span class="num">{{ item.stock_quantity }}</span> 件</span>
+                    </p>
+                </div>
+            </router-link>
+        </div>
+    </template>
+
+    <script>
+        export default {
+            
+        }
+    </script>
+
+    <style scoped>
+        .item{
+
+            width: 48%;
+            border: 1px solid #ccc;
+            margin-bottom: 5px;
+            box-shadow: 0px 0px 5px #ccc;
+            border-radius: 3px;
+            padding: 4px;
+
+            display: flex; // 垂直排列
+            flex-direction: column; // 设置上下顶端和底部对齐
+            justify-content: space-between;
+        }
+    </style>
+```
+
+### vue中按钮实现跳转
+
+```vue
+    <template>
+        <div>
+             <div class="mui-card-footer btn">
+                <!-- plain 属性,是指按钮按下去时会有闪动效果 -->
+                <mt-button plain type="primary" size='large'>评论</mt-button>
+                <mt-button plain type="danger" size='large' @click="getGoodsDesc">商品详情</mt-button>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        export default {
+            data() {
+                return {
+                    id: this.$route.params.id,
+                    goodsinfo: {},
+                    lunbo: []
+                }
+            },
+            methods:{
+                getGoodsDesc() {
+                    this.$router.push('/home/goodsDesc/' + this.id);
+
+                    // this.$route.params 是指查询的对象
+                    // this.$router.push  是指跳转的对象
+                }
+            }
+        }
+    </script>
+
+    <style scoped>
+
+    </style>
+```
 
 
 
+### vuex  -- 用法
 
+1. vuex 下载 `npm i vuex -S`
+
+2. 在 `main.js` 文件中,进行导入,并安装到vue身上
+
+   ```js
+   import Vuex from 'vuex'
+   Vue.use(Vuex);
+   ```
+
+3. 创建store 对象,实现组件间的数据共享
+
+4. ```js
+   var store = new Vuex.Store({
+   	state:{},
+   	mutations:{},
+   	getters:{}
+   });
+   ```
+
+   将store 挂载到vue实例身上
+
+   ```js
+   new Vue({
+       store
+   });
+   ```
+
+5. 有关仓库中state 数据的操作
+
+   + 在mutations 的方法中最多只能有两个参数 [第一个为state,第二个为唯一参数]
+
+6. ```js
+   
+   ```

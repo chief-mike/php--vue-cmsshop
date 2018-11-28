@@ -21,6 +21,9 @@ import goodsList from './components/goods/goodsList.vue';
 import goodsDetail from './components/goods/goodsDetail.vue';
 import goodsDesc from './components/goods/goodsDesc.vue';
 
+//shopcar
+// import shopCarList from './components/shopcar/shopCarList.vue';
+
 
 
 // 定义各种路由
@@ -37,7 +40,8 @@ const router = new vueRouter({ //创建路由对象
         {path:'/home/photoDetail/:id',component:photoDetail},  //带id 的 photoDetail
         {path:'/home/goodsList',component:goodsList},
         {path:'/home/goodsDetail/:id',component:goodsDetail},  //带id 的 photoDetail
-        {path:'/home/goodsDesc/:id',component:goodsDesc}  //带id 的 photoDetail
+        {path:'/home/goodsDesc/:id',component:goodsDesc},  //带id 的 photoDetail
+        // {path:'/tabbar/shopCarList',components:shopCarList}
     ],
     
     // 修改路由对象的默认类
