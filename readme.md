@@ -1,5 +1,9 @@
 ## vue-cmsshop
 
+[![npm version](https://img.shields.io/npm/v/axios.svg?style=flat-square)](https://www.npmjs.org/package/axios)
+
+[![gitter chat](https://img.shields.io/gitter/room/mzabriskie/axios.svg?style=flat-square)](mike'default_null_url)
+
 ### 配置文件
 在 `main.js` 文件中 进行各种文件配置
 
